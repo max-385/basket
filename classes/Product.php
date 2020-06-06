@@ -2,7 +2,9 @@
 
 namespace classes;
 
-class Product
+class Product extends Entity
 {
-    
+    public $productId;
+
+
 }

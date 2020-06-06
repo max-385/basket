@@ -6,3 +6,4 @@ basket.iml
 npm-shrinkwrap.json
 npm
 elixir.json
+/config/DbConfig.php

@@ -5,7 +5,7 @@ function autoload($className)
 {
     $className = str_replace('_', '/', $className);
 
-    require_once("classes\\$className.php");
+    require_once("$className.php");
 }
 
 spl_autoload_register('autoload');
