@@ -19,13 +19,11 @@
 
     <?php
 
-    $products = new \classes\Database();
+    $products = new \classes\DBAL();
 
 
     // Test, need to delete later from here
-    $sth = $products->prepare("SELECT * FROM products");
-    $sth->execute();
-    $result = $sth->fetchAll();
+    $result = $products->selectAll()->fetchAll();
     foreach ($result as $res)
     {
         echo $res['description']."  ".$res['picture']."<br>";
