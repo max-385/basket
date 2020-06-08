@@ -1,4 +1,5 @@
-<?php include_once("config/setup.php") ?>
+<?php include_once("config/setup.php");
+session_start()?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,30 +13,37 @@
 
 
 <body>
-<h1>Hello, world!</h1>
 
 
 <div class="container">
-
-    <?php
-
-    $products = new \classes\DBAL();
-
-
-    // Test, need to delete later from here
-    $result = $products->selectAll()->fetchAll();
-    foreach ($result as $res)
-    {
-        echo $res['description']."  ".$res['picture']."<br>";
-    }
-    //to here!
-
-
-    ?>
-
+<h1 style="text-align: center">Welcome to our shop!</h1>
+<br>
 </div>
 
 
+<?php
+
+$products = new \classes\Product();
+
+$allProducts = $products->getAllProducts();
+?>
+
+
+
+<div class="container">
+    <div class="row text-center">
+    <?php foreach ($allProducts as $product) {?>
+        <div class="col-md-3">
+            <div class="card-body table-bordered">
+                <h4 class="card-title"><b><?php echo $product['name'] ?></b></h4>
+                <p class="card"><?php echo $product['picture'] ?></p>
+                <p class="card-text"><?php echo $product['description'] ?></p>
+                <a href="#" class="btn btn-primary"><?php echo $product['price']?> €</a>
+            </div>
+        </div>
+    <?php } ?>
+</div>
+</div>
 
 
 <?php
