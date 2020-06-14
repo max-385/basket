@@ -6,6 +6,7 @@
   },
   "devDependencies": {
     "basic-elixir": "^1.0.1",
+    "bootstrap": "^4.5.0",
     "bootstrap-sass": "^3.4.1",
     "gulp": "^3.9.1",
     "jquery": "^3.5.1",
@@ -13,5 +14,6 @@
     "laravel-elixir-footer": "^0.2.0",
     "laravel-elixir-webpack-official": "^1.0.10",
     "lodash": "^4.17.15"
-  }
+  },
+  "dependencies": {}
 }

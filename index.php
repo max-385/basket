@@ -1,5 +1,5 @@
 <?php include_once("config/setup.php");
-session_start()?>
+session_start() ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,44 +8,45 @@ session_start()?>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="assets/css/default.css">
     <link rel="stylesheet" type="text/css" href="assets/css/app.css">
-    <title><?php echo $siteTitle?></title>
+    <title><?php echo $siteTitle ?></title>
 </head>
 
 
 <body>
 
-
 <div class="container">
-<h1 style="text-align: center">Welcome to our shop!</h1>
-<br>
+    <h1 style="text-align: center">Welcome to our shop!</h1>
+    <br>
 </div>
 
 
 <?php
-
 $products = new \classes\Product();
-
 $allProducts = $products->getAllProducts();
 ?>
 
-
-
+<!-- Display all products -->
 <div class="container">
     <div class="row text-center">
-    <?php foreach ($allProducts as $product) {?>
-        <div class="col-md-3">
-            <div class="card-body table-bordered">
-                <h4 class="card-title"><b><?php echo $product['name'] ?></b></h4>
-                <p class="card"><?php echo $product['picture'] ?></p>
-                <p class="card-text"><?php echo $product['description'] ?></p>
-                <a href="#" class="btn btn-primary"><?php echo $product['price']?> €</a>
+        <?php foreach ($allProducts as $product) { ?>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-5">
+                <div class="card h-100 shadow">
+                    <h5 class="card-header d-flex justify-content-center align-items-center mb-2 title"><b><?php echo $product['name'] ?></b></h5>
+                    <div class="card-body">
+                        <img class="card-img mb-3" src="<?php echo $product['picture'] ?>" style=" height:60%" alt="">
+                        <p class="card-text"><?php echo $product['description'] ?></p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary btn-lg"><?php echo $product['price'] ?> €</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    <?php } ?>
-</div>
+        <?php } ?>
+    </div>
 </div>
 
 
+<!-- Sticky footer -->
 <?php
 include_once("template/footer.php"); ?>
 </body>
