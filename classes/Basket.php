@@ -4,28 +4,40 @@
 namespace classes;
 
 
-class Basket
+class Basket extends Entity
 {
-    public $basketId; //Unique id for basket
-    public $items = []; //Products in basket
-    public $totalPrice; //Products sum in basket
-    public $totalQuantity;
 
 
-
-    /**
-     * @return array
-     */
-    public function getItems(): array
-    {
-        return $this->items;
-    }
-
-    public function addToBasket($productID, $quantity=1)
+    public function addToBasket($productId, $quantity)
     {
         $product = new Product();
+        if (empty($_SESSION['basket'][$productId])) { //If the product with this ID isn't in the basket
+            $_SESSION['basket'][$productId] = $product->getProductById($productId);  // Then put this product in
+            unset ($_SESSION['basket'][$productId]['description']);
+        }
+
+        if (empty($_SESSION['basket'][$productId]['quantity'])) { //If this product quantity == 0
+            $_SESSION['basket'][$productId]['quantity'] = $quantity; // Then add requested quantity
+        } else {
+            $_SESSION['basket'][$productId]['quantity'] += $quantity; // Or add more quantity
+        }
+    }
 
 
+    public function removeFromBasket($productId)
+    {
+        $product = new Product();
+        unset ($_SESSION['basket'][$productId]);
+    }
+
+    public function editQuantityInBasket($productId, $newQuantity)
+    {
+        $_SESSION['basket'][$productId]['quantity'] = $newQuantity;
+    }
+
+    public function clearBasket()
+    {
+        $_SESSION['basket'] = [];
     }
 
 

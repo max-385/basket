@@ -31,7 +31,8 @@ $allProducts = $products->getAllProducts();
         <?php foreach ($allProducts as $product) { ?>
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-5">
                 <div class="card h-100 shadow">
-                    <h5 class="card-header d-flex justify-content-center align-items-center mb-2 title"><b><?php echo $product['name'] ?></b></h5>
+                    <h5 class="card-header d-flex justify-content-center align-items-center mb-2 title">
+                        <b><?php echo $product['name'] ?></b></h5>
                     <div class="card-body">
                         <img class="card-img mb-3" src="<?php echo $product['picture'] ?>" style=" height:60%" alt="">
                         <p class="card-text"><?php echo $product['description'] ?></p>
@@ -44,6 +45,15 @@ $allProducts = $products->getAllProducts();
         <?php } ?>
     </div>
 </div>
+
+
+<?php
+//unset($_SESSION['basket']);
+$basket = new \classes\Basket();
+$basket->addToBasket(1, 15);
+var_export($_SESSION['basket']);
+
+?>
 
 
 <!-- Sticky footer -->
