@@ -27,15 +27,18 @@ const elixir = require('basic-elixir');
  */
 elixir(mix => {
         // Example
-		//mix.del(["build", "css", "js"])
-    	//.sass('default.scss').version('css/default.css')
+        //mix.del(["build", "css", "js"])
+        //.sass('default.scss').version('css/default.css')
         //.webpack('default.js').version('js/default.js');
 
         mix.sass('default.scss', 'assets/css');
+        mix.webpack('default.js', 'assets/js');
+
 });
 
 
 
 elixir(function(mix) {
         mix.sass('app.scss', 'assets/css');
+        mix.webpack('bootstrap.js', 'assets/js');
 });

@@ -1,5 +1,4 @@
-<?php include_once("config/setup.php");
-session_start() ?>
+<?php include_once("config/setup.php") ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,7 +37,9 @@ $allProducts = $products->getAllProducts();
                         <p class="card-text"><?php echo $product['description'] ?></p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary btn-lg"><?php echo $product['price'] ?> €</a>
+                        <button class="btn btn-primary btn-lg btn-add-to-basket"
+                                data-product-id="<?php echo $product['id'] ?>"><? phpA echo $product['price'] ?> €
+                        </button>
                     </div>
                 </div>
             </div>
@@ -48,16 +49,15 @@ $allProducts = $products->getAllProducts();
 
 
 <?php
-//unset($_SESSION['basket']);
 $basket = new \classes\Basket();
-$basket->addToBasket(1, 15);
-var_export($_SESSION['basket']);
-
+//$basket->editQuantityInBasket(1, 11);
 ?>
-
+<div class="container" id="test-basket"><?php var_export($_SESSION['basket']) ?></div>
 
 <!-- Sticky footer -->
 <?php
 include_once("template/footer.php"); ?>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="assets/js/default.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 /node_modules
 /.idea
-/assets/css
+/assets/
 package-lock.json
 basket.iml
 npm-shrinkwrap.json
