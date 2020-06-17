@@ -38,7 +38,7 @@ $allProducts = $products->getAllProducts();
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-primary btn-lg btn-add-to-basket"
-                                data-product-id="<?php echo $product['id'] ?>"><? phpA echo $product['price'] ?> €
+                                data-product-id="<?php echo $product['id'] ?>"><?php echo $product['price'] ?> €
                         </button>
                     </div>
                 </div>
@@ -47,6 +47,7 @@ $allProducts = $products->getAllProducts();
     </div>
 </div>
 
+<div class="container"><button class="btn btn-lg btn-danger btn-clear-basket">Clear basket</button></div>
 
 <?php
 $basket = new \classes\Basket();

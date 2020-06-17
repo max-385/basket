@@ -32,6 +32,21 @@ $('document').ready(function () {
     })
 
 
+    //Remove all products from basket
+    $('.btn-clear-basket').on('click', function (event) {
+       if(confirm('Are you sure you want to delete all products from basket?')){
+        $.ajax({
+            url: 'ajax/clearBasket.php',
+            success: function () {
+                $("#test-basket").load(" #test-basket");
+            }
+        })}
+
+
+        }
+
+    )
+
 });
 
 
