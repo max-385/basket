@@ -5,4 +5,4 @@ use classes\Basket;
 
 
 $product = new Basket();
-$product->addToBasket($_POST['id'], 1); //TODO receive quantity from user
+$product->addToBasket($_POST['id'], $_POST['quantity']);

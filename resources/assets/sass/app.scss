@@ -1,12 +1,13 @@
 
-
 html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   margin-bottom: 100px; /* Margin bottom by footer height */
 }
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -21,4 +22,9 @@ body {
   @media (min-width: 768px) {
     height: 75px;
   }
+}
+
+.product-qty {
+  width: 50px;
+  margin-top: 10px;
 }
