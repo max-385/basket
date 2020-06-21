@@ -45,5 +45,29 @@ class Basket extends Entity
         $_SESSION['basket'] = [];
     }
 
+    public function getBasketProducts()
+    {
+        if (empty($_SESSION['basket'])) {
+            return false;
+        }
 
+        foreach ($_SESSION['basket'] as $id => $product) {
+            $_SESSION['basket'][$id]['itemTotalPrice'] = $_SESSION['basket'][$id]['quantity'] * $_SESSION['basket'][$id]['price'];
+        }
+        return $_SESSION['basket'];
+    }
+
+    public function getBasketTotalPrice()
+    {
+        if (empty($_SESSION['basket'])) {
+            return false;
+        }
+
+        $totalSum = 0;
+        foreach ($_SESSION['basket'] as $id => $product) {
+            $totalSum += $_SESSION['basket'][$id]['itemTotalPrice'];
+        }
+
+        return $totalSum;
+    }
 }

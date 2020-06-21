@@ -28,3 +28,19 @@ body {
   width: 50px;
   margin-top: 10px;
 }
+
+.popover {
+  min-width: 80%;
+  margin-left: 10%;
+  text-align: center;
+}
+
+.popover-header {
+  width: 100%;
+  margin: unset;
+  text-align: center;
+}
+
+.popover-body a {
+  color: white;
+}

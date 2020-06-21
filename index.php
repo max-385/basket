@@ -19,13 +19,13 @@
     <br>
 </div>
 
+
 <?php
 $products = new \classes\Product();
 $allProducts = $products->getAllProducts();
 ?>
-
 <div class="container">
-    <a id="basket-popover"><h1><i class="fas fa-shopping-basket"></i></h1>Basket</a>
+    <?php include_once("template/basket.php") ?>
     <!-- Display all products -->
     <div class="row text-center">
         <?php foreach ($allProducts as $product) { ?>
@@ -57,18 +57,18 @@ $allProducts = $products->getAllProducts();
 <?php
 $basket = new \classes\Basket();
 ?>
-<div class="container" id="test-basket"><?php
-    if (!empty($_SESSION['basket'])) {
-        var_export($_SESSION['basket']);
-    } else {
-        echo 'Your basket is empty! ';
-    }
-    ?></div>
+<div class="container" id="test-basket"><?php var_export($basket->getBasketProducts()); ?></div>
 
 <!-- Sticky footer -->
 <?php
 include_once("template/footer.php"); ?>
-<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 <script src="assets/js/default.js"></script>
 </body>
 </html>

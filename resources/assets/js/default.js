@@ -48,16 +48,29 @@ $('document').ready(function () {
 
     // Remove all products from basket
     $('.btn-clear-basket').on('click', function () {
-        if (confirm('Are you sure you want to delete all products from basket?')) {
-            $.ajax({
-                url: 'ajax/clearBasket.php',
-                success: function () {
-                    $("#test-basket").load(" #test-basket");
-                }
-            })
+            if (confirm('Are you sure you want to delete all products from basket?')) {
+                $.ajax({
+                    url: 'ajax/clearBasket.php',
+                    success: function () {
+                        $("#test-basket").load(" #test-basket");
+                    }
+                })
             }
         }
-    )
+    );
+
+    /*    $(function () {
+            $('[data-toggle="popover"]').popover()
+        });*/
+
+
+    $('#basket-popover').popover({
+        html: true,
+        container: 'body',
+        content: function () {
+            return $('#popover-content-wrap').html()
+        }
+    });
 
 
 });
