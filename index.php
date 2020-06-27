@@ -50,15 +50,6 @@ $allProducts = $products->getAllProducts();
     </div>
 </div>
 
-<div class="container">
-    <button class="btn btn-lg btn-danger btn-clear-basket">Clear basket</button>
-</div>
-
-<?php
-$basket = new \classes\Basket();
-?>
-<div class="container" id="test-basket"><?php var_export($basket->getBasketProducts()); ?></div>
-
 <!-- Sticky footer -->
 <?php
 include_once("template/footer.php"); ?>

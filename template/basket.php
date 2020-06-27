@@ -34,7 +34,10 @@ $basketSum = $basket->getBasketTotalPrice();
                 <div class="col-2"><?php echo $product['quantity'] ?></div>
                 <div class="col-2"><?php echo number_format($product['price'], 2, ' . ', ' ') . ' €' ?></div>
                 <div class="col-2"><?php echo number_format($totalCost, 2, ' . ', ' ') . ' €' ?></div>
-                <div class="col-2"><a class="btn btn-danger btn-sm">Delete</a></div>
+                <div class="col-2"><a class="btn btn-danger btn-sm" onclick="$(this).removeFromBasket()"
+                                      data-product-id="<?php echo $product['id'] ?>"><i class="fa fa-minus-circle"
+                                                                                        aria-hidden="true"></i>
+                        Delete </a></div>
             </div>
         <?php }
     } else echo "<br><H2>Basket is empty!</H2>" ?>
@@ -47,6 +50,12 @@ $basketSum = $basket->getBasketTotalPrice();
         <div class="col-2"></div>
     </div>
     <div class="container">
-        <a tabindex="0" class="btn btn-danger btn-clear-basket">Clear basket</a>
+        <a tabindex="0" class="btn btn-lg btn-danger btn-clear-basket"><i class="fa fa-trash" aria-hidden="true"></i>
+            Clear basket</a>
     </div>
+
+</div>
+<div class="container">
+    <a tabindex="0" class="btn btn-lg btn-danger btn-clear-basket"><i class="fa fa-trash" aria-hidden="true"></i>
+        Clear basket</a>
 </div>

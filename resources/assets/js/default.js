@@ -22,18 +22,37 @@ $('document').ready(function () {
         let id = $(this).data('product-id');
         let qty = $(this).closest('div.card-footer').find('.product-qty').val();
         $.ajax({
-            url: 'ajax/addToBasket.php',
+            url: 'ajax/basketActions.php',
             type: 'post',
             data: {
                 id: id,
-                quantity: qty
+                quantity: qty,
+                action: 'add'
             },
             success: function () {
-                $("#test-basket").load(" #test-basket");
-//                $("#basket-popover").popover("show");
+            $('#basket-popover').popover('hide');
+            $("#popover-content-wrap").load(location.href+" #popover-content-wrap","");
+            $(".total_price").load(location.href+" .total_price","");
             }
         })
     });
+
+    $.fn.removeFromBasket = function(){
+        let id = $(this).data('product-id');
+
+        $.ajax({
+            url: 'ajax/basketActions.php',
+            type: 'post',
+            data: {
+                id: id,
+                action: 'del'
+            },
+            success: function() {
+                $("#popover-content-wrap").load(location.href+" #popover-content-wrap","");
+                 $(".total_price").load(location.href+" .total_price","");
+            }
+        })
+    };
 
     // Quantity validation (allowable range from 1 to 99 pcs)
     $('.product-qty').each(function (key, object) {
@@ -51,9 +70,12 @@ $('document').ready(function () {
     $('.btn-clear-basket').on('click', function () {
             if (confirm('Are you sure you want to delete all products from basket?')) {
                 $.ajax({
-                    url: 'ajax/clearBasket.php',
+                    url: 'ajax/basketActions.php',
+                    type: 'post',
+                    data: 'action=clear',
                     success: function () {
-                        $("#test-basket").load(" #test-basket");
+                        $("#popover-content-wrap").load(location.href+" #popover-content-wrap","");
+                        $(".total_price").load(location.href+" .total_price","");
                     }
                 })
             }
