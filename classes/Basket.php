@@ -20,12 +20,7 @@ class Basket extends Entity
             unset ($_SESSION['basket'][$productId]['description']);
         }
 
-
-        if (empty($_SESSION['basket'][$productId]['quantity'])) { //If this product quantity == 0
-            $_SESSION['basket'][$productId]['quantity'] = $quantity; // Then add requested quantity
-        } else {
-            $_SESSION['basket'][$productId]['quantity'] += $quantity; // Or add more quantity
-        }
+        $_SESSION['basket'][$productId]['quantity'] += $quantity; // Add requested quantity
     }
 
 

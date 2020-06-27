@@ -13,7 +13,7 @@ class DBAL extends Database
 
     public function selectAll()
     {
-        return $this->query($this->preSelectAll());
+        return $this->query($this->buildSelectAll());
     }
 
     public function selectById($id)
@@ -23,6 +23,6 @@ class DBAL extends Database
 
     public function selectBy(array $conditions)
     {
-        return $this->preSelectBy($conditions);
+        return $this->buildSelectBy($conditions);
     }
 }

@@ -16,7 +16,7 @@ $basketSum = $basket->getBasketTotalPrice();
     </div>
 </nav>
 
-<div id="popover-content-wrap" style="display: none">
+<div id="popover-content-wrap" style="display: ">
     <div class="row popover-header">
         <div class="col-4">NAME</div>
         <div class="col-2">Quantity</div>
@@ -47,6 +47,6 @@ $basketSum = $basket->getBasketTotalPrice();
         <div class="col-2"></div>
     </div>
     <div class="container">
-        <a class="btn btn-lg btn-danger btn-clear-basket">Clear basket</a>
+        <a tabindex="0" class="btn btn-danger btn-clear-basket">Clear basket</a>
     </div>
 </div>

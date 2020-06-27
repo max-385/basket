@@ -14,9 +14,9 @@ class Database extends \PDO
         parent::__construct($dsn, $dbConfig->getUserName(), $dbConfig->getDbPassword());
     }
 
-    protected function preSelectBy(array $conditions)
+    protected function buildSelectBy(array $conditions)
     {
-        $query = $this->preSelectAll();
+        $query = $this->buildSelectAll();
         $i = 0;
         $values = [];
         foreach ($conditions as $key => $value) {
@@ -35,7 +35,7 @@ class Database extends \PDO
         return $test;
     }
 
-    protected function preSelectAll()
+    protected function buildSelectAll()
     {
         return "SELECT id, name, price, picture, description FROM products";
     }

@@ -15,5 +15,8 @@
     "laravel-elixir-webpack-official": "^1.0.10",
     "lodash": "^4.17.15"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@popperjs/core": "^2.4.2",
+    "popper.js": "^1.16.1"
+  }
 }

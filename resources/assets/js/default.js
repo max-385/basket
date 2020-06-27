@@ -30,6 +30,7 @@ $('document').ready(function () {
             },
             success: function () {
                 $("#test-basket").load(" #test-basket");
+//                $("#basket-popover").popover("show");
             }
         })
     });
@@ -58,6 +59,7 @@ $('document').ready(function () {
             }
         }
     );
+
 
     /*    $(function () {
             $('[data-toggle="popover"]').popover()
