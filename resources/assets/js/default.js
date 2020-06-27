@@ -11,6 +11,8 @@
 // require('./my-javascript-file');
 // require('./subfolder/my-javascript-file');
 
+import {auto} from "@popperjs/core";
+
 /**
  * Custom javascript can also be included below
  */
@@ -37,9 +39,29 @@ $('document').ready(function () {
         })
     });
 
-    $.fn.removeFromBasket = function(){
-        let id = $(this).data('product-id');
 
+// Remove all products from basket
+    $('body').on('click', '#btn-clear-all', function(e) {
+        e.preventDefault();
+        if (confirm('Are you sure you want to delete all products from basket?')) {
+            $.ajax({
+                url: 'ajax/basketActions.php',
+                type: 'post',
+                data: 'action=clear',
+                success: function () {
+                    $('#basket-popover').popover('hide');
+                    $("#popover-content-wrap").load(location.href+" #popover-content-wrap","");
+                    $(".total_price").load(location.href+" .total_price","");
+                }
+            })
+        }
+    });
+
+
+// Remove from basket single product
+    $('body').on('click', '#btn-remove-product', function(e) {
+        e.preventDefault();
+        let id = $('#btn-remove-product').data('product-id');
         $.ajax({
             url: 'ajax/basketActions.php',
             type: 'post',
@@ -48,11 +70,13 @@ $('document').ready(function () {
                 action: 'del'
             },
             success: function() {
+                $('#basket-popover').popover('hide');
                 $("#popover-content-wrap").load(location.href+" #popover-content-wrap","");
-                 $(".total_price").load(location.href+" .total_price","");
+                $(".total_price").load(location.href+" .total_price","");
             }
         })
-    };
+    });
+
 
     // Quantity validation (allowable range from 1 to 99 pcs)
     $('.product-qty').each(function (key, object) {
@@ -66,22 +90,6 @@ $('document').ready(function () {
         });
     });
 
-    // Remove all products from basket
-    $('.btn-clear-basket').on('click', function () {
-            if (confirm('Are you sure you want to delete all products from basket?')) {
-                $.ajax({
-                    url: 'ajax/basketActions.php',
-                    type: 'post',
-                    data: 'action=clear',
-                    success: function () {
-                        $("#popover-content-wrap").load(location.href+" #popover-content-wrap","");
-                        $(".total_price").load(location.href+" .total_price","");
-                    }
-                })
-            }
-        }
-    );
-
 
     /*    $(function () {
             $('[data-toggle="popover"]').popover()
@@ -90,11 +98,14 @@ $('document').ready(function () {
 
     $('#basket-popover').popover({
         html: true,
+        placement: 'auto',
         container: 'body',
         content: function () {
             return $('#popover-content-wrap').html()
         }
     });
+
+
 
 
 });

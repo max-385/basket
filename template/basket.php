@@ -7,16 +7,16 @@ $basketSum = $basket->getBasketTotalPrice();
     <div>
         <ul class="nav navbar-nav">
             <li>
-                <button class="btn btn-lg" id="basket-popover" data-toggle="popover" data-placement="bottom">
+                <a tabindex="0" role="button" class="btn btn-lg" id="basket-popover" data-toggle="popover">
                     <i class="fas fa-shopping-basket"></i> Total: <span
                             class="total_price"> <?php echo number_format($basketSum, 2, ' . ', ' ') ?> €</span>
-                </button>
+                </a>
             </li>
         </ul>
     </div>
 </nav>
 
-<div id="popover-content-wrap" style="display: ">
+<div id="popover-content-wrap" style="display: none">
     <div class="row popover-header">
         <div class="col-4">NAME</div>
         <div class="col-2">Quantity</div>
@@ -34,10 +34,9 @@ $basketSum = $basket->getBasketTotalPrice();
                 <div class="col-2"><?php echo $product['quantity'] ?></div>
                 <div class="col-2"><?php echo number_format($product['price'], 2, ' . ', ' ') . ' €' ?></div>
                 <div class="col-2"><?php echo number_format($totalCost, 2, ' . ', ' ') . ' €' ?></div>
-                <div class="col-2"><a class="btn btn-danger btn-sm" onclick="$(this).removeFromBasket()"
+                <div class="col-2"><a class="btn btn-danger btn-sm" id="btn-remove-product"
                                       data-product-id="<?php echo $product['id'] ?>"><i class="fa fa-minus-circle"
-                                                                                        aria-hidden="true"></i>
-                        Delete </a></div>
+                                                                                        aria-hidden="true"></i> Delete </a></div>
             </div>
         <?php }
     } else echo "<br><H2>Basket is empty!</H2>" ?>
@@ -50,12 +49,7 @@ $basketSum = $basket->getBasketTotalPrice();
         <div class="col-2"></div>
     </div>
     <div class="container">
-        <a tabindex="0" class="btn btn-lg btn-danger btn-clear-basket"><i class="fa fa-trash" aria-hidden="true"></i>
-            Clear basket</a>
+        <a id="btn-clear-all" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Clear basket</a>
     </div>
+</div>
 
-</div>
-<div class="container">
-    <a tabindex="0" class="btn btn-lg btn-danger btn-clear-basket"><i class="fa fa-trash" aria-hidden="true"></i>
-        Clear basket</a>
-</div>
