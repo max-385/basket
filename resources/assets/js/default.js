@@ -50,8 +50,8 @@ $('document').ready(function () {
                 data: 'action=clear',
                 success: function () {
                     $('#basket-popover').popover('hide');
-                    $("#popover-content-wrap").load(location.href+" #popover-content-wrap","");
-                    $(".total_price").load(location.href+" .total_price","");
+                    $("#popover-content-wrap").load(location.href + " #popover-content-wrap", "");
+                    $(".total_price").load(location.href + " .total_price", "");
                 }
             })
         }
@@ -59,9 +59,9 @@ $('document').ready(function () {
 
 
 // Remove from basket single product
-    $('body').on('click', '#btn-remove-product', function(e) {
-        e.preventDefault();
-        let id = $('#btn-remove-product').data('product-id');
+    $('body').on('click', '.btn-remove-product', function (event) {
+        event.preventDefault();
+        let id = event.target.id;
         $.ajax({
             url: 'ajax/basketActions.php',
             type: 'post',
@@ -69,9 +69,9 @@ $('document').ready(function () {
                 id: id,
                 action: 'del'
             },
-            success: function() {
+            success: function () {
                 $('#basket-popover').popover('hide');
-                $("#popover-content-wrap").load(location.href+" #popover-content-wrap","");
+                $("#popover-content-wrap").load(location.href + " #popover-content-wrap", "");
                 $(".total_price").load(location.href+" .total_price","");
             }
         })
@@ -83,19 +83,16 @@ $('document').ready(function () {
         $(object).change(function () {
             let value = $(object).val();
             if (value <= 0) {
+                alert('invalid value (allowed from 1 to 99)');
                 $(object).val(1);
             } else if (value > 99) {
+                alert('invalid value (allowed from 1 to 99)');
                 $(object).val(99)
             }
         });
     });
 
-
-    /*    $(function () {
-            $('[data-toggle="popover"]').popover()
-        });*/
-
-
+// Basket popover content
     $('#basket-popover').popover({
         html: true,
         placement: 'auto',
