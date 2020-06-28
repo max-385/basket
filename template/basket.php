@@ -1,6 +1,5 @@
 <?php $basket = new \classes\Basket();
 $basketProducts = $basket->getBasketProducts();
-$basketSum = $basket->getBasketTotalPrice();
 ?>
 
 <nav class="navbar nav pl-0">
@@ -9,7 +8,7 @@ $basketSum = $basket->getBasketTotalPrice();
             <li>
                 <a tabindex="0" role="button" class="btn btn-lg" id="basket-popover" data-toggle="popover">
                     <i class="fas fa-shopping-basket"></i> Total:
-                    <span class="total_price"> <?php echo number_format($basketSum, 2, ' . ', ' ') ?> €</span>
+                    <span class="total_price"> <?php echo number_format($basket->getBasketTotalPrice(), 2, ' . ', ' ') ?> €</span>
                 </a>
             </li>
         </ul>
@@ -42,12 +41,12 @@ $basketSum = $basket->getBasketTotalPrice();
             <div class="col-4"></div>
             <div class="col-2"></div>
             <div class="col-2"></div>
-            <div class="col-2"><?php echo number_format($basketSum, 2, ' . ', ' ') . ' €' ?></div>
+            <div class="col-2"><?php echo number_format($basket->getBasketTotalPrice(), 2, ' . ', ' ') . ' €' ?></div>
             <div class="col-2"></div>
         </div>
-        <div class="container" id="popover-footer">
+        <div class="container mt-2" id="popover-footer">
             <a id="btn-clear-all" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Clear basket</a>
-            <a href="footer.php" id="btn-proceed" class="btn btn-success"><i class="fas fa-money-bill-wave"></i> Proceed
+            <a href="checkout.php" id="btn-proceed" class="btn btn-success"><i class="fas fa-money-bill-wave"></i> Proceed
                 to checkout</a>
         </div>
 

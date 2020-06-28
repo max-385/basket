@@ -61,7 +61,7 @@ $('document').ready(function () {
 // Remove from basket single product
     $('body').on('click', '.btn-remove-product', function (event) {
         event.preventDefault();
-        let id = event.target.id;
+        let id = this.id;
         $.ajax({
             url: 'ajax/basketActions.php',
             type: 'post',
@@ -102,6 +102,16 @@ $('document').ready(function () {
         }
     });
 
+// Hide popover when clicking outside
+    $('body').on('click', function (e) {
+        $('[data-toggle="popover"]').each(function () {
+            //the 'is' for buttons that trigger popups
+            //the 'has' for icons within a button that triggers a popup
+            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                $(this).popover('hide');
+            }
+        });
+    });
 
 
 
