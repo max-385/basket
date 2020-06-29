@@ -1,4 +1,4 @@
-<?php include_once("config/setup.php") ?>
+<?php include_once(__DIR__.'/config/setup.php') ?>
 
 
 <body>

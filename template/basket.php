@@ -4,7 +4,7 @@ $basketProducts = $basket->getBasketProducts();
 
 <nav class="navbar nav pl-0">
     <div>
-        <ul class="nav navbar-nav">
+        <ul class="navbar-nav">
             <li>
                 <a tabindex="0" role="button" class="btn btn-lg" id="basket-popover" data-toggle="popover">
                     <i class="fas fa-shopping-basket"></i> Total:
@@ -38,11 +38,7 @@ $basketProducts = $basket->getBasketProducts();
             </div>
         <?php } ?>
         <div class="row popover-header">
-            <div class="col-4"></div>
-            <div class="col-2"></div>
-            <div class="col-2"></div>
-            <div class="col-2"><?php echo number_format($basket->getBasketTotalPrice(), 2, ' . ', ' ') . ' €' ?></div>
-            <div class="col-2"></div>
+            <div class="col-2 offset-8"><?php echo number_format($basket->getBasketTotalPrice(), 2, ' . ', ' ') . ' €' ?></div>
         </div>
         <div class="container mt-2" id="popover-footer">
             <a id="btn-clear-all" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Clear basket</a>
