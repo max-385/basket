@@ -32,9 +32,21 @@ if ($basket->getBasketTotalPrice() == 0) {
 
 
 
+    <div class="row row-cols-2 offset-2">
+            <div class="custom-control custom-radio">
+                <input type="radio" id="cardRadio" name="paymentRadio" class="custom-control-input">
+                <label class="custom-control-label" for="cardRadio"><i class="fab fa-cc-visa"> Credit card</i></label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="ibanRadio" name="paymentRadio" class="custom-control-input">
+                <label class="custom-control-label" for="ibanRadio"><i class="fas fa-university"> IBAN</i></label>
+            </div>
+    </div>
 
 
-</div>
+    </div>
+
+
 
 
 <?php include_once(__DIR__ . '/template/footer.php'); ?>
