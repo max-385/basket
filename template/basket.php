@@ -25,13 +25,12 @@ $basketProducts = $basket->getBasketProducts();
     </div>
     <?php
     if (!empty($basketProducts)) {
-        foreach ($basketProducts as $id => $product) {
-            $totalCost = $product['quantity'] * $product['price']; ?>
+        foreach ($basketProducts as $id => $product) {?>
             <div class="row popover-body">
                 <div class="col-4"><?php echo $product['name'] ?></div>
                 <div class="col-2"><?php echo $product['quantity'] ?></div>
                 <div class="col-2"><?php echo number_format($product['price'], 2, ' . ', ' ') . ' €' ?></div>
-                <div class="col-2"><?php echo number_format($totalCost, 2, ' . ', ' ') . ' €' ?></div>
+                <div class="col-2"><?php echo number_format($product['itemTotalPrice'], 2, ' . ', ' ') . ' €' ?></div>
                 <div class="col-2"><a class="btn btn-danger btn-sm btn-remove-product"
                                       id="<?php echo $id ?>">
                         <i class="fa fa-minus-circle" aria-hidden="true"></i> Delete</a></div>
