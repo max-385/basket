@@ -2,7 +2,7 @@
 
 namespace classes;
 
-class Product extends Entity
+class Product
 {
     public $productId; //Unique id for the product
 

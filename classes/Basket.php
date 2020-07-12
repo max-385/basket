@@ -4,8 +4,11 @@
 namespace classes;
 
 
-class Basket extends Entity
+class Basket
 {
+
+    public $productsInBasket;
+    public $basketTotalPrice;
 
 
     public function addToBasket($productId, int $quantity)
@@ -18,15 +21,16 @@ class Basket extends Entity
         if (empty($_SESSION['basket'][$productId])) { //If the product with this ID isn't in the basket
             $_SESSION['basket'][$productId] = $product->getProductById($productId);  // Then put this product in
             unset ($_SESSION['basket'][$productId]['description']);
+            unset ($_SESSION['basket'][$productId]['id']);
         }
 
         $_SESSION['basket'][$productId]['quantity'] += $quantity; // Add requested quantity
+        $this->productsInBasket = $_SESSION['basket'];
     }
 
 
     public function removeFromBasket($productId)
     {
-        $product = new Product();
         unset ($_SESSION['basket'][$productId]);
     }
 
@@ -40,7 +44,7 @@ class Basket extends Entity
         $_SESSION['basket'] = [];
     }
 
-    public function getBasketProducts()
+    public function getEachProductTotalPrice()
     {
         if (empty($_SESSION['basket'])) {
             return false;
@@ -49,7 +53,18 @@ class Basket extends Entity
         foreach ($_SESSION['basket'] as $id => $product) {
             $_SESSION['basket'][$id]['itemTotalPrice'] = $_SESSION['basket'][$id]['quantity'] * $_SESSION['basket'][$id]['price'];
         }
-        return $_SESSION['basket'];
+    }
+
+    public function getBasketProducts()
+    {
+        if (empty($_SESSION['basket'])) {
+            return false;
+        }
+
+        $this->getEachProductTotalPrice();
+        $this->getBasketTotalPrice();
+        return $this->productsInBasket = $_SESSION['basket'];
+
     }
 
     public function getBasketTotalPrice()
@@ -63,6 +78,6 @@ class Basket extends Entity
             $totalSum += $_SESSION['basket'][$id]['itemTotalPrice'];
         }
 
-        return $totalSum;
+        return $this->basketTotalPrice = $totalSum;
     }
 }

@@ -6,12 +6,13 @@ namespace classes;
 
 class Payment
 {
-    public $paymentMethod;
-    public $cardType;
-    public $cardOwner;
-    public $cardNum;
-    public $cardExpiry;
-    public $cardCVV;
+    private $paymentMethod;
+    private $cardType;
+    private $cardOwner;
+    private $cardNum;
+    private $cardExpiry;
+    private $cardCVV;
+    private $paid = false;
 
     /**
      * @return mixed
@@ -64,7 +65,7 @@ class Payment
     /**
      * @return mixed
      */
-    public function getCardNum()
+    public function getCardNum(): int
     {
         return $this->cardNum;
     }
@@ -72,7 +73,7 @@ class Payment
     /**
      * @param mixed $cardNum
      */
-    public function setCardNum($cardNum)
+    public function setCardNum(int $cardNum)
     {
         $this->cardNum = $cardNum;
     }
@@ -80,7 +81,7 @@ class Payment
     /**
      * @return mixed
      */
-    public function getCardExpiry()
+    public function getCardExpiry(): int
     {
         return $this->cardExpiry;
     }
@@ -88,7 +89,7 @@ class Payment
     /**
      * @param mixed $cardExpiry
      */
-    public function setCardExpiry($cardExpiry)
+    public function setCardExpiry(int $cardExpiry)
     {
         $this->cardExpiry = $cardExpiry;
     }
@@ -96,7 +97,7 @@ class Payment
     /**
      * @return mixed
      */
-    public function getCardCVV()
+    public function getCardCVV(): int
     {
         return $this->cardCVV;
     }
@@ -104,9 +105,26 @@ class Payment
     /**
      * @param mixed $cardCVV
      */
-    public function setCardCVV($cardCVV)
+    public function setCardCVV(int $cardCVV)
     {
         $this->cardCVV = $cardCVV;
     }
+
+    /**
+     * @return bool
+     */
+    public function isPaid(): bool
+    {
+        return $this->paid;
+    }
+
+    /**
+     * @param bool $paid
+     */
+    public function setPaid(bool $paid)
+    {
+        $this->paid = $paid;
+    }
+
 
 }

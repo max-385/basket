@@ -41,14 +41,60 @@ body {
   text-align: center;
 }
 
-.popover-body a {
-  color: white;
-}
+.popover-body {
+  a {
+    color: white;
+  }
 
-.popover-body #popover-footer {
-  text-align: right;
+  #popover-footer {
+    text-align: right;
+  }
 }
 
 div.form-group {
   position: relative;
+}
+
+
+//Animations
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.75);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+// Pulsing button
+.btn-pulse {
+  animation-name: pulse;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+
+  &:hover {
+    animation-name: unset; // Pause pulsing, when button is hovered over
+  }
+}
+
+@keyframes shakeBasket {
+  25% {
+    transform: translateX(8px)
+  }
+  50% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shakeBasket .4s ease-in-out forwards; // Shake basket icon, after product is added to basket
 }

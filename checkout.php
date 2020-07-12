@@ -46,6 +46,7 @@ if ($basket->getBasketTotalPrice() == 0) {
         </div>
     </div>
 
+
     <!-- Checkout card form-->
     <form action="transaction.php" id="cardPayment" method="post" class="needs-validation" novalidate>
 
@@ -155,7 +156,8 @@ if ($basket->getBasketTotalPrice() == 0) {
 
 
     <!-- Checkout bank form-->
-    <form id="ibanPayment" method="post" class="needs-validation" style="display: none" novalidate>
+    <form action="transaction.php" id="ibanPayment" method="post" class="needs-validation" style="display: none"
+          novalidate>
         <h4 class="text-center">IBAN payment</h4>
         <p class="text-center">Provide contact details and you will receive invoice by e-mail.</p>
 

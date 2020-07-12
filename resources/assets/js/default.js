@@ -11,8 +11,6 @@
 // require('./my-javascript-file');
 // require('./subfolder/my-javascript-file');
 
-import {auto} from "@popperjs/core";
-
 /**
  * Custom javascript can also be included below
  */
@@ -32,16 +30,24 @@ $('document').ready(function () {
                 action: 'add'
             },
             success: function () {
-            $('#basket-popover').popover('hide');
-            $("#popover-content-wrap").load(location.href+" #popover-content-wrap","");
-            $(".total_price").load(location.href+" .total_price","");
+                setTimeout(function () { //Basket icon shake animation, after product is added to basket
+                    $('#basket-popover').addClass('shake');
+                    setTimeout(function () {
+                        $('#basket-popover').removeClass('shake');
+                    }, 500);
+                }, 100);
+                $('#basket-popover').popover('hide');
+                $("#popover-content-wrap").load(location.href + " #popover-content-wrap", "");
+                $(".total_price").load(location.href + " .total_price", "");
             }
         })
+
+
     });
 
 
 // Remove all products from basket
-    $('body').on('click', '#btn-clear-all', function(e) {
+    $('body').on('click', '#btn-clear-all', function (e) {
         e.preventDefault();
         if (confirm('Are you sure you want to delete all products from basket?')) {
             $.ajax({
@@ -72,7 +78,7 @@ $('document').ready(function () {
             success: function () {
                 $('#basket-popover').popover('hide');
                 $("#popover-content-wrap").load(location.href + " #popover-content-wrap", "");
-                $(".total_price").load(location.href+" .total_price","");
+                $(".total_price").load(location.href + " .total_price", "");
             }
         })
     });
@@ -115,14 +121,14 @@ $('document').ready(function () {
 
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
+    (function () {
         'use strict';
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
+            let forms = document.getElementsByClassName('needs-validation');
             // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
+            let validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
                     if (form.checkValidity() === false) {
                         event.preventDefault();
                         event.stopPropagation();
@@ -132,8 +138,6 @@ $('document').ready(function () {
             });
         }, false);
     })();
-
-
 
 
 });

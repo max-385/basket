@@ -27,7 +27,8 @@ $allProducts = $products->getAllProducts();
                         <p class="card-text"><?php echo $product['description'] ?></p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary btn-lg btn-add-to-basket" id="<?php echo $product['id'] ?>"
+                        <button class="btn btn-primary btn-lg btn-add-to-basket btn-pulse"
+                                id="<?php echo $product['id'] ?>"
                                 data-product-id="<?php echo $product['id'] ?>"><?php echo $product['price'] ?> €
                         </button>
                         <label for="product-qty">Quantity: <input class="product-qty" type="number" value="1" min="1"
