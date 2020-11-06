@@ -2,7 +2,7 @@
 
 $basket = new \classes\Basket();
 // If basket is empty, redirect to index
-if ($basket->getBasketTotalPrice() == 0) {
+if (!$basket->getBasketProducts()) {
     header('Location:index.php');
 } ?>
 

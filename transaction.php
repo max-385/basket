@@ -11,7 +11,8 @@ if (empty($_POST['paymentMethod']) || empty($_SESSION['basket'])) {
 
 // Get basket products from checkout
 $basket = new Basket();
-$basketProducts = $basket->getBasketProducts();
+$basket->getBasketProducts();
+$basket->getBasketTotalPrice();
 
 // Get payment information from post
 $payment = new Payment();

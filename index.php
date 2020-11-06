@@ -14,7 +14,10 @@ $products = new \classes\Product();
 $allProducts = $products->getAllProducts();
 ?>
 <div class="container">
-    <?php include_once("template/basket.php") ?>
+    <?php include_once("template/basket.php");
+    //    print_r($basket->productsInBasket);
+    //    print_r($basket->basketTotalPrice);?>
+
     <!-- Display all products -->
     <div class="row text-center">
         <?php foreach ($allProducts as $product) { ?>
